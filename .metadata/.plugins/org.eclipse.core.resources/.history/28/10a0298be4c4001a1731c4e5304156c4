@@ -1,0 +1,11 @@
+import com.sun.tools.sjavac.server.SysInfo;
+
+public class MotorBike{
+	public static void specs()
+	{
+		int cc=0;
+		int weight=0;
+		
+		System.out.println("The CC of the Bike is",cc);
+	}
+}

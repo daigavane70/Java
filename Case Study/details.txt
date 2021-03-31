@@ -1,0 +1,10 @@
+1001-Vedant Daigavane-Savings-9800.00
+1002-Harshil Shah-Savings-10000.00
+1003-Rohit James-Savings-2300.00
+1004-Sufiya Sayyed-Savings-6700.00
+1005-Sameer Memon-Savings-8800.00
+1006-Shivendra Bhonsle-Savings-900.00
+1007-Bhavana Bafna-Savings-800.00
+1008-Bindi Shah-Current-90000.00
+1009-Karan Boonlia-Current-67800.00
+1010-Adwait Deshmukh-Current-12800.00

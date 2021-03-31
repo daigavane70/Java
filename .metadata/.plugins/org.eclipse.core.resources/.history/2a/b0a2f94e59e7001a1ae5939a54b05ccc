@@ -1,0 +1,190 @@
+import java.util.*;
+
+public class Book {
+	
+	String author;	//Authors
+	String title;	//title of book
+	int ISBN;		//ISBN
+	int cost;		//cost of Book
+	int total;		//total Published
+	int issued;		//total Issued Books
+	
+	int search(Book obj[],int n,String s)
+	{
+		for(int i=0;i<n;i++)
+		{
+			if(obj[i].title.contentEquals(s))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	void getdetails()		//Function to get Details
+	{
+		Scanner sc=new Scanner(System.in);	
+		
+		System.out.print("Title: ");
+		this.title=sc.nextLine();
+		
+		System.out.print("Author: ");
+		this.author=sc.nextLine();
+		
+		System.out.print("ISBN: ");
+		ISBN=sc.nextInt();
+		
+		System.out.print("Cost: ");
+		cost=sc.nextInt();
+		
+		System.out.print("Total compies Published: ");
+		total=sc.nextInt();
+		
+		issued=0;
+	}
+	
+	void details()
+	{
+		System.out.print("\n"+title);
+		System.out.print("\t"+author);
+		System.out.printf("\t"+ISBN);
+		System.out.printf("\t"+cost);
+		System.out.printf("\t"+total);
+		System.out.printf("\t"+issued);
+	}
+	
+	int available()
+	{
+		return total-issued;
+	}
+	
+	int issue()
+	{
+		if(this.available()>=1)
+		{
+			issued++;
+			return 1;
+		}
+		
+		return 0;
+	}
+	
+	void returnBook()
+	{
+		issued--;
+	}
+	
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int n;							//total books
+		
+		System.out.println("Enter Total Number of Books: ");
+		n=sc.nextInt();					//reading total numbers of Books
+		
+		Book obj[]=new Book[n];	//creating array of objects
+		
+		Book p,q;
+		
+		int choice=0;					//users choice
+		
+		while(choice<=6)
+		{
+			System.out.println("\n***************************");
+			System.out.println("<-----------Menu----------->");
+			System.out.println("1. Enter Books Details");
+			System.out.println("2. Search Book");
+			System.out.println("3. Check Availability");
+			System.out.println("4. Return Book");
+			System.out.println("5. Issue a Book");
+			System.out.println("6. Display All Book Details");
+			System.out.println("7. Exit");
+			System.out.println("***************************");
+			choice=sc.nextInt();
+			
+			switch(choice)
+			{
+			case 1:
+			{
+				for(int i=0;i<n;i++)
+				{
+					obj[i]=new Book();
+					System.out.println("Book "+(i+1));
+					obj[i].getdetails();
+					System.out.println("");
+				}
+				break;
+			}
+			
+			case 2:
+			{
+				String s;
+				System.out.print("Enter the Book Title to Search: ");
+				s=sc.next();
+				System.out.println(s);
+				int k=obj[0].search(obj,n,s);
+				if(k+1>0)
+				{
+					System.out.print("Found");
+					obj[k].details();
+				}
+				else
+				{
+					System.out.println("Not Found");
+				}
+				break;
+			}
+			case 3:
+			{
+				String s;
+				System.out.print("Title: ");
+				s=sc.next();
+				int k=obj[0].search(obj, n, s);
+				if(k+1>0)
+				{
+					System.out.println(obj[k].available()+" Available Copies");
+				}
+				break;
+			}
+			case 4:
+			{
+				System.out.print("\nName\tauthor\tISBn\tCost\tTotal\tIssued");
+				for(int i=0;i<n;i++)
+				{
+					obj[i].details();
+				}
+				int k;
+				System.out.print("\nEnter the Serial Number to return that book: ");
+				k=sc.nextInt();
+				obj[k-1].returnBook();
+				break;
+			}
+			case 5:
+			{
+				System.out.println("\nName\tauthor\tISBn\tCost\tTotal\tIssued");
+				for(int i=0;i<n;i++)
+				{
+					obj[i].details();
+				}
+				int k;
+				System.out.print("\nEnter the Serial Number to issue that book: ");
+				k=sc.nextInt();
+				obj[k+1].issue();
+				break;
+			}
+			case 6:
+			{
+				System.out.println("");
+				System.out.println("\nName\tauthor\tISBn\tCost\tTotal\tIssued");
+				for(int i=0;i<n;i++)
+				{
+					obj[i].details();
+				}
+				break;
+			}
+			}
+		}
+	}
+
+}

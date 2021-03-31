@@ -1,0 +1,11 @@
+public class MotorBike{
+	
+	static int cc=0,weight=0,maxSpeed=0;
+	
+	public static void specs()
+	{
+		System.out.println(cc);
+		System.out.println(weight);
+		System.out.println(maxSpeed);
+	}
+}
